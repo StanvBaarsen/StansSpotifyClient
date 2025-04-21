@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stan's Spotify Tracker</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="icon" href="/assets/images/Logo.png">
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+	<script src="/assets/js/spotify.js"></script>
+	<script src="/assets/js/home.js"></script>
+</head>
+
+<body>
+	<p id='loading'>Loading...</p>
+	<div id="notLoggedIn">
+		<div class="container">
+			<p>Welcome! <a id='newLogin'>Click here to log in with Spotify</a></p>
+		</div>
+	</div>
+	<div id="expired">
+		<div class="container">
+			<p>The session has expired! <a id='expiredLogin'>Log in again</a></p>
+		</div>
+	</div>
+	<div id="loggedIn">
+		<div id="header">
+			<h1 class="site-title">Stan's Spotify Tracker</h1>
+		</div>
+		<div class="container">
+			<p>Great! You are logged in<span id='user'></span>!</p>
+			<button id='signout'>Log out</button>
+
+			<div class="container shaded-container">
+				<p id="playerData"></p>
+				<div id="playback">
+					<p id="timer"></p>
+					<button id='prev'>Previous</button>
+					<button id='pauseplay'>Play</button>
+					<button id='next'>Next</button>
+					<button id='shuffle'>Toggle shuffle</button>
+				</div>
+				<button id='lastPlayer'>Continue playing</button>
+			</div>
+			<div class="container shaded-container">
+				<button id='loadFavourites'>Load your favorites</button>
+				<ol id='artists'></ol>
+				<br>
+				<ol id='tracks'></ol>
+			</div>
+			<div class="container shaded-container">
+				<div class="search-wrapper">
+					<input type="text" id="searchInput" class="search-input" placeholder="Search for artists, albums, or tracks...">
+					<button id='search'>Search</button>
+				</div>
+				<div id="searchResults"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html> 

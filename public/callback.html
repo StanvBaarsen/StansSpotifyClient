@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stan's Spotify Tracker</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="icon" href="/assets/images/Logo.png">
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+	<script src="/assets/js/spotify.js"></script>
+	<script src="/assets/js/callback.js"></script>
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			text-align: center;
+		}
+		.loading-text {
+			font-size: 1.4rem;
+			animation: pulse 1.5s infinite;
+		}
+		@keyframes pulse {
+			0% { opacity: 0.6; }
+			50% { opacity: 1; }
+			100% { opacity: 0.6; }
+		}
+	</style>
+</head>
+<body>
+	<div class="loading-text">Loading your Spotify data...</div>
+</body>
+</html> 
