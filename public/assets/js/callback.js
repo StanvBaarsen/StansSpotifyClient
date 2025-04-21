@@ -22,10 +22,20 @@ onload = async function () {
 	let url = window.location.href;
 	let code = url.split("code=")[1];
 	
-	var xhr = new XMLHttpRequest();
-	xhr.addEventListener("readystatechange", function () {
-		if (this.readyState === 4 && this.status === 200) {
-			let result = JSON.parse(this.response);
+	if (!code) {
+		document.write("<p>Error: No authorization code received from Spotify</p>");
+		return;
+	}
+	
+	// Call our serverless function to exchange the code for tokens
+	let redirectURI = encodeURI(location.origin + "/callback");
+	
+	try {
+		const response = await fetch(`/.netlify/functions/spotify-auth?action=getToken&code=${encodeURIComponent(code)}&redirect_uri=${encodeURIComponent(redirectURI)}`);
+		
+		if (response.ok) {
+			const result = await response.json();
+			
 			if (result.access_token && result.refresh_token) {
 				localStorage.setItem("access_token", result.access_token);
 				localStorage.setItem("refresh_token", result.refresh_token);
@@ -34,16 +44,14 @@ onload = async function () {
 			} else {
 				document.write("<p>Error: <pre>" + JSON.stringify(result) + "</pre></p>");
 			}
-		} else if (this.readyState === 4) {
-			document.write("<p>Error: <pre>" + this.status + ": " + this.response + "</pre></p>");
+		} else {
+			const error = await response.text();
+			document.write("<p>Error: <pre>" + response.status + ": " + error + "</pre></p>");
 		}
-	});
-	
-	xhr.open("POST", "https://accounts.spotify.com/api/token");
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.setRequestHeader("Authorization", "Basic " + btoa(callbackClientID + ':' + callbackClientSecret));
-	let redirectURI = encodeURI(location.origin + "/callback");
-	xhr.send("grant_type=authorization_code&code=" + code + "&redirect_uri=" + redirectURI);
+	} catch (error) {
+		console.error("Error exchanging code for tokens:", error);
+		document.write("<p>Error: " + error.message + "</p><p><a href='/'>Back to home</a></p>");
+	}
 }
 
 function writeError() {

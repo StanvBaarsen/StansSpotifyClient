@@ -1,16 +1,19 @@
 [build]
   command = "npm run build"
   publish = "public"
+  functions = "netlify/functions"
+
+[dev]
+  framework = "#static"
+  port = 3000
+  publish = "public"
+  autoLaunch = true
+  envFiles = [".env.development"]
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[dev]
-  command = "npm run dev"
-  port = 8888
-  publish = "public"
 
 [build.processing]
   skip_processing = false
