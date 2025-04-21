@@ -19,3 +19,6 @@ yarn-error.log*
 .DS_Store
 .idea/
 .vscode/ 
+
+# dist
+public/dist/

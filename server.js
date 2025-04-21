@@ -8,6 +8,9 @@ const ALTERNATE_PORTS = [3001, 3002, 3003, 8080, 8081];
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Ensure assets are served correctly
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+
 // API route to serve Spotify credentials
 app.get('/api/credentials', (req, res) => {
   res.json({
@@ -23,6 +26,11 @@ app.get('/', (req, res) => {
 
 app.get('/callback', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'callback.html'));
+});
+
+// Handle all other routes for SPA
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start the server
