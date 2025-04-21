@@ -194,7 +194,7 @@ function search() {
 					const artist = artists[i];
 					html += `
 						<div class="search-item">
-							<img src="${artist.images && artist.images.length ? artist.images[artist.images.length-1].url : '/assets/images/placeholder.png'}" alt="${artist.name}">
+							<img src="${artist.images && artist.images.length ? artist.images[artist.images.length-1].url : 'assets/images/placeholder.png'}" alt="${artist.name}">
 							<div class="item-details">
 								<div class="item-name">${artist.name}</div>
 								<div class="item-meta">Artist</div>
@@ -214,7 +214,7 @@ function search() {
 					const track = tracks[i];
 					html += `
 						<div class="search-item">
-							<img src="${track.album.images && track.album.images.length ? track.album.images[track.album.images.length-1].url : '/assets/images/placeholder.png'}" alt="${track.name}">
+							<img src="${track.album.images && track.album.images.length ? track.album.images[track.album.images.length-1].url : 'assets/images/placeholder.png'}" alt="${track.name}">
 							<div class="item-details">
 								<div class="item-name">${track.name}</div>
 								<div class="item-meta">${track.artists[0].name} • ${track.album.name}</div>
@@ -234,7 +234,7 @@ function search() {
 					const album = albums[i];
 					html += `
 						<div class="search-item">
-							<img src="${album.images && album.images.length ? album.images[album.images.length-1].url : '/assets/images/placeholder.png'}" alt="${album.name}">
+							<img src="${album.images && album.images.length ? album.images[album.images.length-1].url : 'assets/images/placeholder.png'}" alt="${album.name}">
 							<div class="item-details">
 								<div class="item-name">${album.name}</div>
 								<div class="item-meta">${album.artists[0].name} • ${album.release_date.substring(0, 4)}</div>
