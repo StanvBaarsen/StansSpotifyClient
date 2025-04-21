@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "npm install"
   },
   "keywords": [
     "spotify",
@@ -23,4 +24,4 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
-} 
+}  
